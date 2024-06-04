@@ -1,0 +1,123 @@
+@font-face {
+    font-family: 'Lobster';
+    src: url('./Lobster-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background: #ffffff;
+  border-bottom: 1px solid black;
+}
+
+#logo-container a#homeLogo {
+  font-family: 'Lobster', sans-serif;
+  font-size: 60px;
+  color: crimson;
+}
+
+nav#navbar {
+  display: flex;
+}
+
+nav#navbar a.nav-button {
+  text-decoration: none;
+  color: #333; 
+  font-size: 16px;
+  background: white;
+  margin-left: 10px;
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+nav#navbar a.nav-button:hover {
+  background-color: white;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+}
+#searchForm {
+    text-align: center; 
+    margin-top: 20px;
+}
+#searchForm input[type="text"] {
+    margin: 5px;
+    padding: 10px;
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    display: inline-block; 
+    width: 85%;
+}
+
+#searchOptions {
+    display: inline;
+    margin: 10px 5px;
+}
+
+#searchOptions input[type="radio"] {
+    margin: 0 5px 0 15px; 
+}
+
+#searchOptions label {
+    margin-right: 15px; 
+}
+
+#searchForm button {
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 4px; 
+    cursor: pointer;
+    display: inline-block; 
+}
+
+#searchButton {
+    background-color: crimson; 
+    color: white;
+}
+
+#googleMapsButton {
+    background-color: rgb(19, 95, 221); 
+    color: white;
+}
+
+#map {
+    margin: 0 auto; 
+    margin-bottom: 30px;
+}
+
+#searchForm, #searchResults, #restaurantDetailsContainer {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+h1 {
+	margin-left: 20px;
+	color: grey;
+	font-weight: normal;
+}
+#sorting-options {
+	border: 1px, grey;
+	margin-left: 20px;
+	color: grey;
+}

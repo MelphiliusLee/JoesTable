@@ -1,0 +1,65 @@
+package minhao_CSCI201_Assignment4;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.*;
+import javax.servlet.http.*;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import okhttp3.HttpUrl;
+import okhttp3.OkHttpClient;
+import okhttp3.Response;
+
+@WebServlet("/RestaurantSearchServlet")
+public class ServletRestaurantSearch extends HttpServlet {
+
+	private static final long serialVersionUID = 1L; // serializeUID
+	private final OkHttpClient httpClient = new OkHttpClient();
+    private final String API_KEY = "65IWarb-3_ElumE4yXQULv7AMbBSqkjbf2DTHHRkdL6KmsLRX4jac8vLLWSVdO7NSmK6Sy7aderj7mJ4QJq31yddgbeWpmRB5t8enisBn92p7Sc-RrubKbtIyw9hZXYx"; 
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+
+        // Parse the request body to get search parameters
+        String term = request.getParameter("term");
+        String latitude = request.getParameter("latitude");
+        String longitude = request.getParameter("longitude");
+        String sort_by = request.getParameter("sort_by");
+
+        // Construct the Yelp API request URL
+        HttpUrl.Builder urlBuilder = HttpUrl.parse("https://api.yelp.com/v3/businesses/search").newBuilder();
+        if (term != null && !term.isEmpty()) {
+            urlBuilder.addQueryParameter("term", term);
+        }
+        urlBuilder.addQueryParameter("latitude", latitude);
+        urlBuilder.addQueryParameter("longitude", longitude);
+        urlBuilder.addQueryParameter("sort_by", sort_by);
+
+        String url = urlBuilder.build().toString();
+
+        // Create the request to Yelp API
+        okhttp3.Request yelpRequest = new okhttp3.Request.Builder()
+                .url(url)
+                .get()
+                .addHeader("Authorization", "Bearer " + API_KEY)
+                .build();
+
+        // Execute the Yelp API request
+        try (Response yelpResponse = httpClient.newCall(yelpRequest).execute()) {
+
+            if (!yelpResponse.isSuccessful()) {
+                throw new IOException("Unexpected code " + yelpResponse);
+            }
+
+            // Send the response from Yelp API back to the client
+            PrintWriter out = response.getWriter();
+            out.print(yelpResponse.body().string());
+            out.flush();
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "An error occurred while processing the Yelp API request.");
+        }
+    }
+}

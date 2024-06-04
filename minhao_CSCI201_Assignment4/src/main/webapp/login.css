@@ -1,0 +1,128 @@
+@font-face {
+    font-family: 'Lobster';
+    src: url('./Lobster-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background: #ffffff;
+  border-bottom: 1px solid black;
+}
+
+#logo-container a#homeLogo {
+  font-family: 'Lobster', sans-serif;
+  font-size: 60px;
+  color: crimson;
+}
+
+nav#navbar {
+  display: flex;
+}
+
+nav#navbar a.nav-button {
+  text-decoration: none;
+  color: #333; /* Change as needed */
+  font-size: 16px;
+  background: white;
+  margin-left: 10px;
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+nav#navbar a.nav-button:hover {
+  background-color: white;
+}
+
+main {
+    display: flex;
+    justify-content: space-around;
+    padding: 40px;
+}
+
+section {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 40%;
+}
+
+section h2 {
+    color:  grey;
+    font-weight: normal;
+    margin-bottom: 20px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+section label {
+	display: block;
+	margin-bottom: 5px; 
+	color: grey; 
+	font-size: 16px; 
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: crimson;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: crimson;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.checkbox-container input {
+    margin-right: 5px;
+}
+
+.checkbox-container label {
+    margin: 0;
+    color: grey;
+}
+
+@media (max-width: 800px) {
+    main {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    section {
+        width: 80%;
+        margin-bottom: 20px;
+    }
+}
